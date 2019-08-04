@@ -1,4 +1,3 @@
---------------------------------------------------------------------------
 module Combatants where
 
 import Data.Set (Set)
@@ -50,10 +49,21 @@ addStatus statusEffect status = Set.insert statusEffect status
 ---------------------------------------------------------------------------
 --EQUIPMENT
 
-data Equip = Sword | Shield | Armour deriving (Eq, Ord, Enum, Show)
+data EquipInfo = EquipInfo
+  { equipName :: String
+  , equipText :: String
+  , equipBuff :: Int
+  } deriving (Show)
 
-type Equipment = Set Equip
+data Sword = BambooPole | Club | CopperSword | HandAxe | BroadSword | FlameSword | ErdrickSword deriving (Eq, Ord, Enum, Show)
+data Shield = LeatherShield | IronShield | SilverShield deriving (Eq, Ord, Enum, Show)
+data Armour = Clothes | LeatherArmour | ChainMail | HalfPlate | FullPlate | MagicArmour | ErdrickArmour deriving (Eq, Ord, Enum, Show)
 
+data Equipment = Equipment
+  { sword :: Sword
+  , shield :: Shield
+  , armour :: Armour
+  } deriving (Show)
 
 ---------------------------------------------------------------------------
 --SPELLS
